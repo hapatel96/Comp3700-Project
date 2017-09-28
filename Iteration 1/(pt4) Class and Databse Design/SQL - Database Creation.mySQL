@@ -1,0 +1,30 @@
+CREATE TABLE ProductDB (
+  IDNum int NOT NULL PRIMARY KEY,
+  ProductName varchar(255),
+  NumAvailable int,
+  Price decimal(15,2),
+  VendorNum int
+);
+
+INSERT INTO ProductDB
+VALUES (00001, 'Apples', 30, 0.99, 12), 
+       (00002, 'Oranges', 20, 1.50, 15),
+       (00003, 'Bananas', 40, 0.95, 09),
+       (00004, 'Plums', 15, 1.25, 21),
+       (00005, 'Peaches', 20, 1.29, 5);
+
+CREATE TABLE OrderDB (
+  IDNum int NOT NULL PRIMARY KEY,
+  OrderTotal decimal(15,2),
+  OrderDate date,
+  PaymentType ENUM('Cash', 'Credit', 'Debit'),
+  CustomerName varchar(255),
+  CustomerPhone varchar(10)
+);
+
+INSERT INTO OrderDB
+VALUES (1001, 20.90, '2017-01-17', 'Debit', 'Bob Smith', 6563176589),
+       (1002, 13.60, '2017-01-25', 'Credit', 'Jane Doe', 3461572168),
+       (1003, 9.00, '2017-01-26', 'Cash', 'James William', 4315867245),
+       (1004, 5.98, '2017-02-02', 'Cash', 'Jake Hughes', 1274643424),
+       (1005, 25.90, '2017-07-02', 'Credit', 'Bruce Wayne', 4265413741);
