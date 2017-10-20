@@ -20,6 +20,7 @@ public class systemUI extends javax.swing.JFrame {
         addProductPanel.setVisible(false);
         newProductSuccessMessage.setVisible(false);
         updateProductSuccessMessage.setVisible(false);
+        barcodeNotFoundMessage.setVisible(false);
     }
 
     /**
@@ -75,6 +76,7 @@ public class systemUI extends javax.swing.JFrame {
         CheckoutButton = new javax.swing.JButton();
         TotalLabel = new javax.swing.JLabel();
         TotalNum = new javax.swing.JLabel();
+        barcodeNotFoundMessage = new javax.swing.JLabel();
 
         jPanel2.setPreferredSize(new java.awt.Dimension(1117, 610));
 
@@ -424,11 +426,15 @@ public class systemUI extends javax.swing.JFrame {
             }
         });
 
-        TotalLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        TotalLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         TotalLabel.setText("Total:");
 
-        TotalNum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        TotalNum.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         TotalNum.setText("$0.00");
+
+        barcodeNotFoundMessage.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        barcodeNotFoundMessage.setForeground(new java.awt.Color(255, 0, 0));
+        barcodeNotFoundMessage.setText("Barcode Not Found!");
 
         javax.swing.GroupLayout checkoutPanelLayout = new javax.swing.GroupLayout(checkoutPanel);
         checkoutPanel.setLayout(checkoutPanelLayout);
@@ -436,37 +442,39 @@ public class systemUI extends javax.swing.JFrame {
             checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(checkoutPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(checkoutTablePane, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(207, 207, 207)
                 .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(checkoutPanelLayout.createSequentialGroup()
-                        .addComponent(mainTitle1)
-                        .addContainerGap())
-                    .addGroup(checkoutPanelLayout.createSequentialGroup()
-                        .addComponent(checkoutTablePane, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
-                        .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, checkoutPanelLayout.createSequentialGroup()
+                        .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(barcodeNotFoundMessage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(checkoutPanelLayout.createSequentialGroup()
                                 .addComponent(ManualBarcode)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(ManualBarcodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ManualBarcodeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                                .addGap(100, 100, 100))
-                            .addGroup(checkoutPanelLayout.createSequentialGroup()
-                                .addComponent(TotalLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TotalNum)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, checkoutPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(CheckoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ManualBarcodeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)))
+                        .addGap(100, 100, 100))
+                    .addGroup(checkoutPanelLayout.createSequentialGroup()
+                        .addComponent(TotalLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TotalNum)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(checkoutPanelLayout.createSequentialGroup()
+                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mainTitle1)
+                    .addGroup(checkoutPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(CheckoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         checkoutPanelLayout.setVerticalGroup(
             checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(checkoutPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, checkoutPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(mainTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(checkoutPanelLayout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(checkoutTablePane, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -476,11 +484,13 @@ public class systemUI extends javax.swing.JFrame {
                             .addComponent(ManualBarcodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ManualBarcode)
                             .addComponent(ManualBarcodeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(156, 156, 156)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(barcodeNotFoundMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TotalLabel)
-                            .addComponent(TotalNum))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                            .addComponent(TotalNum)
+                            .addComponent(TotalLabel))))
+                .addGap(35, 35, 35)
                 .addComponent(CheckoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -593,32 +603,38 @@ public class systemUI extends javax.swing.JFrame {
         checkoutPanel.setVisible(true);
     }//GEN-LAST:event_checkoutButtonActionPerformed
 
+    private void CheckoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckoutButtonActionPerformed
+        ((DefaultTableModel) checkoutTable.getModel()).setRowCount(0);
+        ManualBarcodeField.setText("");
+        TotalNum.setText("$0.00");
+        checkoutPanel.setVisible(false);
+        mainPanel.setVisible(true);
+    }//GEN-LAST:event_CheckoutButtonActionPerformed
+
     private void ManualBarcodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManualBarcodeButtonActionPerformed
         DefaultTableModel checkoutTableModel = (DefaultTableModel) checkoutTable.getModel();
         String searchStr = ManualBarcodeField.getText();
         boolean found = false;
-        
+
         for (int i = 0; i <= productTable.getRowCount() - 1; i++){
             if(searchStr.equals(productTable.getValueAt(i,1))){ //if entered barcode matches this row in productTable
                 found = true;
+                barcodeNotFoundMessage.setVisible(false);
                 checkoutTableModel.addRow(
-                        new Object[]{productTable.getValueAt(i,1),productTable.getValueAt(i,0),productTable.getValueAt(i,3)} //make new checkout row
+                    new Object[]{productTable.getValueAt(i,1),productTable.getValueAt(i,0),productTable.getValueAt(i,3)} //make new checkout row
                 );
                 TotalNum.setText("$" +
-                        (Double.parseDouble(TotalNum.getText().substring(1)) + //get old total
+                    (Double.parseDouble(TotalNum.getText().substring(1)) + //get old total
                         Double.parseDouble(productTable.getValueAt(i,3).toString().substring(1))) //add new entry's price
                 );
                 break;
             }
         }
-        if(found = false){
-            //TODO barcode not found message
+        if(!found){
+            System.out.println("here");
+            barcodeNotFoundMessage.setVisible(true);
         }
     }//GEN-LAST:event_ManualBarcodeButtonActionPerformed
-
-    private void CheckoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckoutButtonActionPerformed
-        // TODO should clear Table, total and barcode field. Return to main screen.
-    }//GEN-LAST:event_CheckoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -680,6 +696,7 @@ public class systemUI extends javax.swing.JFrame {
     private javax.swing.JButton addExitButton;
     private javax.swing.JPanel addProductPanel;
     private javax.swing.JTextField addProductTitle;
+    private javax.swing.JLabel barcodeNotFoundMessage;
     private javax.swing.JButton checkoutButton;
     private javax.swing.JPanel checkoutPanel;
     private javax.swing.JTable checkoutTable;
