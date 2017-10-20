@@ -1,15 +1,11 @@
-import java.util.Vector;
 import javax.swing.table.*;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 
 /**
  *
- * @author hp
+ * @author Hashill Patel
+ * @author Chris Dumas
+ * 
  */
 public class systemUI extends javax.swing.JFrame {
 
@@ -20,10 +16,7 @@ public class systemUI extends javax.swing.JFrame {
         initComponents();
         mainPanel.setVisible(true);
         updateProductPanel.setVisible(false);
-        //checkoutPanel.setVisible(false);
-        //paymentTypePanel.setVisible(false);
-        //receiptPanel.setVisible(false);
-        //searchPanel.setVisible(false);
+        checkoutPanel.setVisible(false);
         addProductPanel.setVisible(false);
         newProductSuccessMessage.setVisible(false);
         updateProductSuccessMessage.setVisible(false);
