@@ -178,9 +178,6 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Store Management System"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mainTitleActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="showUpdateScreenButton">
               <Properties>
@@ -201,9 +198,6 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="New Product Successfullly added"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newProductSuccessMessageActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="updateProductSuccessMessage">
               <Properties>
@@ -349,9 +343,6 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Add Product"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addProductTitleActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="ID">
               <Properties>
@@ -425,9 +416,6 @@
                   <Dimension value="[100, 20]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NameFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="NumAvailField">
               <Properties>
@@ -457,9 +445,6 @@
                   <Format format="###-###-####" subtype="-1" type="5"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VendorPhoneFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="NewProductBarcodeNum">
               <Properties>
@@ -478,9 +463,6 @@
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="PriceField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PriceFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="confirmNotice">
               <Properties>
@@ -633,9 +615,6 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Update Existing Product"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateProductTitleActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="updateExitButton">
               <Properties>
@@ -677,9 +656,9 @@
                                       <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TotalLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TotalNum" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -712,8 +691,8 @@
                               </Group>
                               <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TotalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TotalNum" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -733,9 +712,6 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Checkout"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mainTitle1ActionPerformed"/>
-              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="checkoutTablePane">
               <AuxValues>
@@ -780,9 +756,6 @@
               </SubComponents>
             </Container>
             <Component class="javax.swing.JTextField" name="ManualBarcodeField">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ManualBarcodeFieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="ManualBarcode">
               <Properties>
@@ -808,7 +781,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CheckoutButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="TotalLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -816,7 +789,7 @@
                 <Property name="text" type="java.lang.String" value="Total:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="TotalNum">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>

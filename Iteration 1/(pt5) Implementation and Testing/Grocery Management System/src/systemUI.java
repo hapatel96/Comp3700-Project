@@ -1,3 +1,4 @@
+import java.util.Vector;
 import javax.swing.table.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -79,8 +80,8 @@ public class systemUI extends javax.swing.JFrame {
         ManualBarcode = new javax.swing.JLabel();
         ManualBarcodeButton = new javax.swing.JButton();
         CheckoutButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        TotalLabel = new javax.swing.JLabel();
+        TotalNum = new javax.swing.JLabel();
 
         jPanel2.setPreferredSize(new java.awt.Dimension(1117, 610));
 
@@ -116,11 +117,6 @@ public class systemUI extends javax.swing.JFrame {
         mainTitle.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         mainTitle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         mainTitle.setText("Store Management System");
-        mainTitle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mainTitleActionPerformed(evt);
-            }
-        });
 
         showUpdateScreenButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         showUpdateScreenButton.setText("Update Existing Product");
@@ -133,11 +129,6 @@ public class systemUI extends javax.swing.JFrame {
         newProductSuccessMessage.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         newProductSuccessMessage.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         newProductSuccessMessage.setText("New Product Successfullly added");
-        newProductSuccessMessage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newProductSuccessMessageActionPerformed(evt);
-            }
-        });
 
         updateProductSuccessMessage.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         updateProductSuccessMessage.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -186,11 +177,6 @@ public class systemUI extends javax.swing.JFrame {
         addProductTitle.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         addProductTitle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         addProductTitle.setText("Add Product");
-        addProductTitle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addProductTitleActionPerformed(evt);
-            }
-        });
 
         ID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ID.setText("ID:");
@@ -221,11 +207,6 @@ public class systemUI extends javax.swing.JFrame {
         RequiredLabel.setText("Required Fields");
 
         NameField.setMinimumSize(new java.awt.Dimension(100, 20));
-        NameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NameFieldActionPerformed(evt);
-            }
-        });
 
         NumAvailField.setMinimumSize(new java.awt.Dimension(100, 20));
 
@@ -239,11 +220,6 @@ public class systemUI extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        VendorPhoneField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VendorPhoneFieldActionPerformed(evt);
-            }
-        });
 
         NewProductBarcodeNum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         NewProductBarcodeNum.setText("0000000");
@@ -252,12 +228,6 @@ public class systemUI extends javax.swing.JFrame {
         addExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addExitButtonActionPerformed(evt);
-            }
-        });
-
-        PriceField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PriceFieldActionPerformed(evt);
             }
         });
 
@@ -385,11 +355,6 @@ public class systemUI extends javax.swing.JFrame {
         updateProductTitle.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         updateProductTitle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         updateProductTitle.setText("Update Existing Product");
-        updateProductTitle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateProductTitleActionPerformed(evt);
-            }
-        });
 
         updateExitButton.setText("Confirm Changes");
         updateExitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -429,11 +394,6 @@ public class systemUI extends javax.swing.JFrame {
         mainTitle1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         mainTitle1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         mainTitle1.setText("Checkout");
-        mainTitle1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mainTitle1ActionPerformed(evt);
-            }
-        });
 
         checkoutTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -454,12 +414,6 @@ public class systemUI extends javax.swing.JFrame {
         checkoutTable.getTableHeader().setReorderingAllowed(false);
         checkoutTablePane.setViewportView(checkoutTable);
 
-        ManualBarcodeField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManualBarcodeFieldActionPerformed(evt);
-            }
-        });
-
         ManualBarcode.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ManualBarcode.setText("Manual Barcode Entry:");
 
@@ -477,11 +431,11 @@ public class systemUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Total:");
+        TotalLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        TotalLabel.setText("Total:");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("$0.00");
+        TotalNum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        TotalNum.setText("$0.00");
 
         javax.swing.GroupLayout checkoutPanelLayout = new javax.swing.GroupLayout(checkoutPanel);
         checkoutPanel.setLayout(checkoutPanelLayout);
@@ -505,9 +459,9 @@ public class systemUI extends javax.swing.JFrame {
                                 .addComponent(ManualBarcodeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                                 .addGap(100, 100, 100))
                             .addGroup(checkoutPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(TotalLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
+                                .addComponent(TotalNum)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, checkoutPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -531,8 +485,8 @@ public class systemUI extends javax.swing.JFrame {
                             .addComponent(ManualBarcodeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(156, 156, 156)
                         .addGroup(checkoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))))
+                            .addComponent(TotalLabel)
+                            .addComponent(TotalNum))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(CheckoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -602,24 +556,12 @@ public class systemUI extends javax.swing.JFrame {
         mainPanel.setVisible(false);
     }//GEN-LAST:event_showUpdateScreenButtonActionPerformed
 
-    private void updateProductTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateProductTitleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateProductTitleActionPerformed
-
-    private void newProductSuccessMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newProductSuccessMessageActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newProductSuccessMessageActionPerformed
-
     private void updateExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateExitButtonActionPerformed
         //exits product updating table and displays success message
         updateProductPanel.setVisible(false);
         mainPanel.setVisible(true);
         updateProductSuccessMessage.setVisible(true);
     }//GEN-LAST:event_updateExitButtonActionPerformed
-
-    private void addProductTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductTitleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addProductTitleActionPerformed
 
     private void addCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCancelButtonActionPerformed
         NameField.setText("");
@@ -633,14 +575,6 @@ public class systemUI extends javax.swing.JFrame {
         updateProductSuccessMessage.setVisible(false);
         newProductSuccessMessage.setVisible(false);
     }//GEN-LAST:event_addCancelButtonActionPerformed
-
-    private void NameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NameFieldActionPerformed
-
-    private void VendorPhoneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendorPhoneFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_VendorPhoneFieldActionPerformed
 
     private void addExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addExitButtonActionPerformed
         if(!(NameField.getText().equals("") || PriceField.getText().equals(""))){ //required fields have text?
@@ -659,31 +593,31 @@ public class systemUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_addExitButtonActionPerformed
 
-    private void PriceFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PriceFieldActionPerformed
-
     private void checkoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutButtonActionPerformed
-        // TODO add your handling code here:
+        mainPanel.setVisible(false);
+        updateProductSuccessMessage.setVisible(false);
+        newProductSuccessMessage.setVisible(false);
+        checkoutPanel.setVisible(true);
     }//GEN-LAST:event_checkoutButtonActionPerformed
-
-    private void mainTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainTitleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mainTitleActionPerformed
-
-    private void mainTitle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainTitle1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mainTitle1ActionPerformed
-
-    private void ManualBarcodeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManualBarcodeFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ManualBarcodeFieldActionPerformed
 
     private void ManualBarcodeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManualBarcodeButtonActionPerformed
         DefaultTableModel checkoutTableModel = (DefaultTableModel) checkoutTable.getModel();
-        DefaultTableModel productTableModel = (DefaultTableModel) productTable.getModel();
-        for (Object row : productTableModel){
-            row[1]
+        String searchStr = ManualBarcodeField.getText();
+        boolean found = false;
+        
+        for (int i = 0; i <= productTable.getRowCount() - 1; i++){
+            if(searchStr.equals(productTable.getValueAt(i,1))){
+                found = true;
+                checkoutTableModel.addRow(
+                        new Object[]{productTable.getValueAt(i,1),productTable.getValueAt(i,0),productTable.getValueAt(i,3)}
+                );
+            }
+        }
+        if(found = false){
+            //TODO barcode not found message
+        }
+        else{
+            
         }
     }//GEN-LAST:event_ManualBarcodeButtonActionPerformed
 
@@ -741,6 +675,8 @@ public class systemUI extends javax.swing.JFrame {
     private javax.swing.JLabel Price;
     private javax.swing.JTextField PriceField;
     private javax.swing.JLabel RequiredLabel;
+    private javax.swing.JLabel TotalLabel;
+    private javax.swing.JLabel TotalNum;
     private javax.swing.JTextField VendorField;
     private javax.swing.JLabel VendorID;
     private javax.swing.JLabel VendorPhone;
@@ -754,8 +690,6 @@ public class systemUI extends javax.swing.JFrame {
     private javax.swing.JTable checkoutTable;
     private javax.swing.JScrollPane checkoutTablePane;
     private javax.swing.JLabel confirmNotice;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
