@@ -606,23 +606,25 @@ public class systemUI extends javax.swing.JFrame {
         boolean found = false;
         
         for (int i = 0; i <= productTable.getRowCount() - 1; i++){
-            if(searchStr.equals(productTable.getValueAt(i,1))){
+            if(searchStr.equals(productTable.getValueAt(i,1))){ //if entered barcode matches this row in productTable
                 found = true;
                 checkoutTableModel.addRow(
-                        new Object[]{productTable.getValueAt(i,1),productTable.getValueAt(i,0),productTable.getValueAt(i,3)}
+                        new Object[]{productTable.getValueAt(i,1),productTable.getValueAt(i,0),productTable.getValueAt(i,3)} //make new checkout row
                 );
+                TotalNum.setText("$" +
+                        (Double.parseDouble(TotalNum.getText().substring(1)) + //get old total
+                        Double.parseDouble(productTable.getValueAt(i,3).toString().substring(1))) //add new entry's price
+                );
+                break;
             }
         }
         if(found = false){
             //TODO barcode not found message
         }
-        else{
-            
-        }
     }//GEN-LAST:event_ManualBarcodeButtonActionPerformed
 
     private void CheckoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckoutButtonActionPerformed
-        // TODO add your handling code here:
+        // TODO should clear Table, total and barcode field. Return to main screen.
     }//GEN-LAST:event_CheckoutButtonActionPerformed
 
     /**
