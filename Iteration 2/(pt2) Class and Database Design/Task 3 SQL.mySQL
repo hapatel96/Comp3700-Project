@@ -1,0 +1,36 @@
+CREATE TABLE CustomerDB (
+  IDNum int NOT NULL PRIMARY KEY,
+  CustomerName varchar(255),
+  Address varchar(255),
+  PhoneNum varchar(9)
+);
+
+CREATE TABLE OrderDB (
+  IDNum int NOT NULL PRIMARY KEY,
+  TotalCost decimal(15,2),
+  OrderDate date,
+  PaymentType ENUM('Cash', 'Credit', 'Debit'),
+  CustomerID varchar(255)
+);
+
+CREATE TABLE ProductDB (
+  IDNum int NOT NULL PRIMARY KEY,
+  ProductName varchar(255),
+  NumAvailable int,
+  Price decimal(15,2),
+  VendorNum int,
+  Expiration date,
+  Description varchar(255)
+);
+
+CREATE TABLE EmployeeDB (
+  IDNum int NOT NULL PRIMARY KEY,
+  Address varchar(255),
+  Name varchar(255),
+  Role ENUM('Cashier', 'Manager'),
+  PhoneNum varchar(9)
+);
+
+CREATE TABLE BusinessReportDB (
+  
+);
