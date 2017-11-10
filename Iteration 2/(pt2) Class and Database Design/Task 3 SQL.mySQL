@@ -2,7 +2,7 @@ CREATE TABLE CustomerDB (
   IDNum int NOT NULL PRIMARY KEY,
   CustomerName varchar(255),
   Address varchar(255),
-  PhoneNum varchar(9)
+  PhoneNum varchar(12)
 );
 
 INSERT INTO CustomerDB
@@ -14,11 +14,12 @@ CREATE TABLE OrderDB (
   TotalCost decimal(15,2),
   OrderDate date,
   PaymentType ENUM('Cash', 'Credit', 'Debit'),
-  FOREIGN KEY CustomerID REFERENCES CustomerDB (IDNum)
+  CustomerID int NOT NULL,
+  FOREIGN KEY (CustomerID) REFERENCES CustomerDB (IDNum)
 );
 
 INSERT INTO OrderDB
-VALUES (00001, '');
+VALUES (00001, 11.12, '2017-01-17', 'Debit', 0001);
 
 CREATE TABLE ProductDB (
   IDNum int NOT NULL PRIMARY KEY,
@@ -42,7 +43,7 @@ CREATE TABLE EmployeeDB (
   Name varchar(255),
   Address varchar(255),
   Role ENUM('Cashier', 'Manager'),
-  PhoneNum varchar(9)
+  PhoneNum varchar(12)
 );
 
 INSERT INTO EmployeeDB
@@ -52,7 +53,14 @@ VALUES (00001, 'Tung Nguyen', 'Auburn', 'Manager', '555-not-sure'),
 
 CREATE TABLE BusinessReportInfoDB (
   IDNum int NOT NULL PRIMARY KEY,
-  FOREIGN KEY (ProductID) REFERENCES ProductDB (IDNum),
+  ProductID int NOT NULL,
   NumSold int,
+  OrderID int NOT NULL,
+  FOREIGN KEY (ProductID) REFERENCES ProductDB (IDNum),
   FOREIGN KEY (OrderID) REFERENCES OrderDB (IDNum)
 );
+
+INSERT INTO BusinessReportInfoDB
+VALUES  (00001, 00001, 3, 00001),
+        (00002, 00003, 4, 00001),
+        (00003, 00005, 2, 00001);
