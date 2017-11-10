@@ -5,13 +5,20 @@ CREATE TABLE CustomerDB (
   PhoneNum varchar(9)
 );
 
+INSERT INTO CustomerDB
+VALUES (00001, 'Bob Doe', '1234 Clover Lane', '555-554-5125');
+       
+
 CREATE TABLE OrderDB (
   IDNum int NOT NULL PRIMARY KEY,
   TotalCost decimal(15,2),
   OrderDate date,
   PaymentType ENUM('Cash', 'Credit', 'Debit'),
-  CustomerID varchar(255)
+  FOREIGN KEY CustomerID REFERENCES CustomerDB (IDNum)
 );
+
+INSERT INTO OrderDB
+VALUES (00001, '');
 
 CREATE TABLE ProductDB (
   IDNum int NOT NULL PRIMARY KEY,
@@ -23,18 +30,29 @@ CREATE TABLE ProductDB (
   Description varchar(255)
 );
 
+INSERT INTO ProductDB
+VALUES (00001, 'Apples', 30, 0.99, 12, '2017-01-17', 'Red Fruit'), 
+       (00002, 'Oranges', 20, 1.50, 15, '2017-01-17', 'Orange Fruit'),
+       (00003, 'Bananas', 40, 0.95, 09, '2017-01-17', 'Yellow Fruit'),
+       (00004, 'Plums', 15, 1.25, 21, '2017-01-17', 'Purple Fruit'),
+       (00005, 'Peaches', 20, 1.29, 5, '2017-01-17', 'Sweet, Orange Fruit');
+       
 CREATE TABLE EmployeeDB (
   IDNum int NOT NULL PRIMARY KEY,
-  Address varchar(255),
   Name varchar(255),
+  Address varchar(255),
   Role ENUM('Cashier', 'Manager'),
   PhoneNum varchar(9)
 );
 
+INSERT INTO EmployeeDB
+VALUES (00001, 'Tung Nguyen', 'Auburn', 'Manager', '555-not-sure'),
+       (00002, 'Chris', '141 Hemlock Drive', 'Cashier', '678-542-7636'),
+       (00003, 'Harshill', 'Auburn', 'Cashier', '256-343-8050');
+
 CREATE TABLE BusinessReportInfoDB (
   IDNum int NOT NULL PRIMARY KEY,
-  ProductID int,
+  FOREIGN KEY (ProductID) REFERENCES ProductDB (IDNum),
   NumSold int,
-  OrderID int,
-  Revenue decimal(15,2)
+  FOREIGN KEY (OrderID) REFERENCES OrderDB (IDNum)
 );
