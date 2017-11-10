@@ -31,6 +31,10 @@ CREATE TABLE EmployeeDB (
   PhoneNum varchar(9)
 );
 
-CREATE TABLE BusinessReportDB (
-  
+CREATE TABLE BusinessReportInfoDB (
+  IDNum int NOT NULL PRIMARY KEY,
+  ProductID int,
+  NumSold int,
+  OrderID int,
+  Revenue int
 );
