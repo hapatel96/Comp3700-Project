@@ -36,5 +36,5 @@ CREATE TABLE BusinessReportInfoDB (
   ProductID int,
   NumSold int,
   OrderID int,
-  Revenue int
+  Revenue decimal(15,2)
 );
