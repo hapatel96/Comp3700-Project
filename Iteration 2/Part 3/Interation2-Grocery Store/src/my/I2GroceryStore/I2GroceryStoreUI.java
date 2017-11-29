@@ -5,12 +5,28 @@
  */
 package my.I2GroceryStore;
 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageFilter;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.ListModel;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,6 +37,7 @@ import javax.swing.table.DefaultTableModel;
 public class I2GroceryStoreUI extends javax.swing.JFrame {
     final private ArrayList<Pair<String>> managers = new ArrayList<>(1);
     final private ArrayList<Pair<String>> cashiers = new ArrayList<>(1);
+    final private ArrayList<JLabel> images = new ArrayList<>(2);
     private int currentUser = -1;
     private boolean hasManager = false;
     private int LastUserNum = 0;
@@ -32,10 +49,11 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
       setNoneVisible();
       clearMessages();
       mainPanel.setVisible(true);
-      
       //for testing purposes
       managers.add(new Pair<>("admin", "password"));
       cashiers.add(new Pair<>("test", "password"));
+      images.add(new JLabel("No Image"));
+      images.add(new JLabel("No Image"));
    }
 
    /**
@@ -84,16 +102,9 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
         confirmUpdate = new javax.swing.JButton();
         profilePanel = new javax.swing.JPanel();
         profileTitle = new javax.swing.JTextField();
-        editUserName = new javax.swing.JLabel();
         editPicture = new javax.swing.JLabel();
-        editPassword = new javax.swing.JLabel();
-        userNameField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
         profileChanges = new javax.swing.JButton();
-        profilePicturePanel = new javax.swing.JPanel();
         ChangeProfilePhotoButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         managerProfilePanel = new javax.swing.JPanel();
         OtherAccountsLabel = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -104,6 +115,16 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
         ManProfileList = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(704, 0), new java.awt.Dimension(704, 0), new java.awt.Dimension(704, 32767));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 227), new java.awt.Dimension(0, 227), new java.awt.Dimension(32767, 227));
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(255, 0), new java.awt.Dimension(255, 0), new java.awt.Dimension(204, 32767));
+        jPanel1 = new javax.swing.JPanel();
+        passwordField = new javax.swing.JTextField();
+        editPassword = new javax.swing.JLabel();
+        editUserName = new javax.swing.JLabel();
+        userNameField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        profilePicturePanel = new javax.swing.JPanel();
         addProductPanel = new javax.swing.JPanel();
         addProductTitle1 = new javax.swing.JTextField();
         ID = new javax.swing.JLabel();
@@ -545,18 +566,8 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
         profileTitle.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         profileTitle.setText("Edit Your Profile");
 
-        editUserName.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        editUserName.setText("User Name:");
-
         editPicture.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         editPicture.setText("Profile Picture:");
-
-        editPassword.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        editPassword.setText("Password:");
-
-        userNameField.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-
-        passwordField.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
 
         profileChanges.setText("Save Changes");
         profileChanges.addActionListener(new java.awt.event.ActionListener() {
@@ -565,28 +576,12 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
             }
         });
 
-        profilePicturePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout profilePicturePanelLayout = new javax.swing.GroupLayout(profilePicturePanel);
-        profilePicturePanel.setLayout(profilePicturePanelLayout);
-        profilePicturePanelLayout.setHorizontalGroup(
-            profilePicturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
-        );
-        profilePicturePanelLayout.setVerticalGroup(
-            profilePicturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 225, Short.MAX_VALUE)
-        );
-
         ChangeProfilePhotoButton.setText("New Photo");
         ChangeProfilePhotoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ChangeProfilePhotoButtonActionPerformed(evt);
             }
         });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("This Account");
 
         OtherAccountsLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         OtherAccountsLabel.setText("Other Accounts");
@@ -687,6 +682,74 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        passwordField.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+
+        editPassword.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        editPassword.setText("Password:");
+
+        editUserName.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        editUserName.setText("User Name:");
+
+        userNameField.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("This Account");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editUserName)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(editPassword)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 29, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(3, 3, 3)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(editUserName)
+                        .addGap(72, 72, 72))
+                    .addComponent(userNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editPassword)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        profilePicturePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        profilePicturePanel.setMaximumSize(new java.awt.Dimension(202, 227));
+        profilePicturePanel.setMinimumSize(new java.awt.Dimension(202, 227));
+
+        javax.swing.GroupLayout profilePicturePanelLayout = new javax.swing.GroupLayout(profilePicturePanel);
+        profilePicturePanel.setLayout(profilePicturePanelLayout);
+        profilePicturePanelLayout.setHorizontalGroup(
+            profilePicturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        profilePicturePanelLayout.setVerticalGroup(
+            profilePicturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 225, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout profilePanelLayout = new javax.swing.GroupLayout(profilePanel);
         profilePanel.setLayout(profilePanelLayout);
         profilePanelLayout.setHorizontalGroup(
@@ -697,67 +760,57 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(profilePanelLayout.createSequentialGroup()
-                        .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(profilePicturePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ChangeProfilePhotoButton))
-                        .addGap(51, 51, 51)
                         .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, profilePanelLayout.createSequentialGroup()
+                                .addComponent(profilePicturePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(filler3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ChangeProfilePhotoButton)
+                            .addComponent(filler4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(profilePanelLayout.createSequentialGroup()
-                                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(editUserName)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, profilePanelLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(editPassword)))
-                                .addGap(18, 18, 18)
-                                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(userNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(profileTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jSeparator2))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(profilePanelLayout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(profileTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(379, Short.MAX_VALUE))))
                     .addGroup(profilePanelLayout.createSequentialGroup()
                         .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(managerProfilePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
-                        .addComponent(profileChanges, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(profileChanges, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         profilePanelLayout.setVerticalGroup(
             profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(profilePanelLayout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(profilePanelLayout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editPicture)
+                            .addGroup(profilePanelLayout.createSequentialGroup()
+                                .addComponent(profilePicturePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(filler4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(filler3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ChangeProfilePhotoButton))
+                    .addGroup(profilePanelLayout.createSequentialGroup()
+                        .addComponent(profileTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(profileChanges, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(profilePanelLayout.createSequentialGroup()
-                        .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(profilePanelLayout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(editPicture)
-                                    .addComponent(profilePicturePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ChangeProfilePhotoButton))
-                            .addGroup(profilePanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(profileTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)
-                                .addComponent(jLabel1)
-                                .addGap(3, 3, 3)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5)
-                                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(editUserName)
-                                    .addComponent(userNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
-                                .addGroup(profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(editPassword)
-                                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(managerProfilePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                    .addComponent(managerProfilePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         addProductTitle1.setEditable(false);
@@ -1134,6 +1187,7 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
    private void managerLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managerLogOutActionPerformed
+      profilePicturePanel.remove(images.get(currentUser));
       currentUser = -1;
       hasManager = false;
       managerPanel.setVisible(false);
@@ -1142,6 +1196,7 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
 
    private void managerProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managerProfileActionPerformed
       if(hasManager == true){
+        paintProfilePic();
         populateProfileList();
         managerProfilePanel.setVisible(true);
         managerPanel.setVisible(false);
@@ -1197,12 +1252,16 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
    }//GEN-LAST:event_cashierCheckoutActionPerformed
 
    private void cashierProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashierProfileActionPerformed
+      paintProfilePic();
+      
       managerProfilePanel.setVisible(false);
       cashierPanel.setVisible(false);
       profilePanel.setVisible(true);
    }//GEN-LAST:event_cashierProfileActionPerformed
 
    private void cashierLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashierLogOutActionPerformed
+      profilePicturePanel.remove(images.get(currentUser));
+      currentUser = -1;
       cashierPanel.setVisible(false);
       signInPanel.setVisible(true);
    }//GEN-LAST:event_cashierLogOutActionPerformed
@@ -1244,7 +1303,7 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
       managerProfilePanel.setVisible(false);
       profilePanel.setVisible(false);
       
-      checkUserPassChange();
+      checkNamePassChange();
       
       userNameField.setText("");
       passwordField.setText("");
@@ -1346,9 +1405,11 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
             
             if(index >= managers.size()){
                 index -= managers.size();
+                images.remove(index);
                 cashiers.remove(index);
             }
             else{
+                images.remove(index);
                 managers.remove(index);
             }
         }
@@ -1356,9 +1417,62 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ManDeleteProfileButtonActionPerformed
 
     private void ChangeProfilePhotoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangeProfilePhotoButtonActionPerformed
-        // TODO add your handling code here:
+        final JFileChooser fc = new JFileChooser();
+        final FileFilter JPGFilter = new FileNameExtensionFilter(
+                "JPG Files", "jpg");
+        fc.setFileFilter(JPGFilter);
+        fc.setAcceptAllFileFilterUsed(false);
+        int retval = fc.showOpenDialog(null);
+        
+        if(retval == JFileChooser.APPROVE_OPTION){
+            File image = fc.getSelectedFile();
+            JLabel profilePicLabel = processImage(image);
+            if(hasManager){
+                images.set(currentUser, profilePicLabel);
+            }
+            else{
+                images.set(currentUser+managers.size(), profilePicLabel);
+            }
+        }
+        
+        paintProfilePic();
     }//GEN-LAST:event_ChangeProfilePhotoButtonActionPerformed
-   
+    private void paintProfilePic() {
+      profilePicturePanel.removeAll();
+      
+      if(hasManager){
+          profilePicturePanel.add(images.get(currentUser));
+      }
+      else{
+          profilePicturePanel.add(images.get(currentUser+managers.size()));
+      }
+      FlowLayout layout = new FlowLayout();
+      layout.setVgap(-1);
+      profilePicturePanel.setLayout(layout);
+      
+      profilePicturePanel.revalidate();
+      profilePicturePanel.repaint();
+      profilePanel.add(profilePicturePanel);
+      profilePanel.repaint();
+    }
+    
+    private JLabel processImage(File image) { //turns the image into a JLabel Element of the right size.
+        JLabel profilePicLabel = new JLabel("Bad Image");
+        try {
+            BufferedImage profilePic = ImageIO.read(image);
+            BufferedImage temp = new BufferedImage(202, 227, profilePic.getType());
+            Graphics2D g2d = temp.createGraphics();
+            g2d.drawImage(profilePic, 0, 0, 202, 227, null);
+            profilePic = temp;
+            g2d.dispose();
+            ImageIcon icon = new ImageIcon(profilePic);
+            profilePicLabel= new JLabel(icon);
+        } catch (IOException ex) {
+            Logger.getLogger(I2GroceryStoreUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return profilePicLabel;
+    }
+    
    private void setNoneVisible(){
        profilePanel.setVisible(false);
        updateProductPanel.setVisible(false);
@@ -1377,7 +1491,7 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
        barcodeNotFoundMessage.setVisible(false);
     }
    
-    private void checkUserPassChange() {
+    private void checkNamePassChange() {
       String newName = userNameField.getText();
       String newPass = passwordField.getText();
       if(!(newName.equals(""))){
@@ -1449,6 +1563,7 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
       /* Create and display the form */
       java.awt.EventQueue.invokeLater(
          new Runnable() {
+            @Override
             public void run() {
                new I2GroceryStoreUI().setVisible(true);
             }
@@ -1506,10 +1621,13 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
     private javax.swing.JButton exit;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
     private javax.swing.JLabel invalidCredentialsMessage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
@@ -1545,4 +1663,8 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
     private javax.swing.JTextField userNameEntry;
     private javax.swing.JTextField userNameField;
     // End of variables declaration//GEN-END:variables
+
+
+
+    
 }
