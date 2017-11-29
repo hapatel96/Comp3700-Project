@@ -5,39 +5,33 @@
  */
 package my.I2GroceryStore;
 
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageFilter;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.ListModel;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author ph
+ * @author Harshill Patel
+ * @author Chris Dumas
+ * 
  */
 
 public class I2GroceryStoreUI extends javax.swing.JFrame {
-    final private ArrayList<Pair<String>> managers = new ArrayList<>(1);
-    final private ArrayList<Pair<String>> cashiers = new ArrayList<>(1);
-    final private ArrayList<JLabel> images = new ArrayList<>(2);
+    private ArrayList<Pair<String>> managers = new ArrayList<>();
+    private ArrayList<Pair<String>> cashiers = new ArrayList<>();
+    private ArrayList<JLabel> images = new ArrayList<>();
     private int currentUser = -1;
     private boolean hasManager = false;
     private int LastUserNum = 0;
@@ -885,24 +879,6 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(addProductTitle1)
                     .addGroup(addProductPanelLayout.createSequentialGroup()
-                        .addComponent(addCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addProductPanelLayout.createSequentialGroup()
-                        .addGap(0, 2, Short.MAX_VALUE)
-                        .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(VendorPhone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(NumAvail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(VendorID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(OptionalLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(VendorPhoneField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(VendorField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(NumAvailField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(739, 739, 739))
-                    .addGroup(addProductPanelLayout.createSequentialGroup()
                         .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addProductPanelLayout.createSequentialGroup()
                                 .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -919,7 +895,25 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
                                         .addGap(136, 136, 136)
                                         .addComponent(confirmNotice))))
                             .addComponent(RequiredLabel))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addProductPanelLayout.createSequentialGroup()
+                        .addGap(0, 2, Short.MAX_VALUE)
+                        .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(VendorPhone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(NumAvail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(VendorID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(OptionalLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(VendorPhoneField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(VendorField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(NumAvailField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(739, 739, 739))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addProductPanelLayout.createSequentialGroup()
+                        .addComponent(addCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         addProductPanelLayout.setVerticalGroup(
@@ -944,30 +938,32 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
                             .addComponent(Price)
                             .addComponent(PriceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(OptionalLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NumAvail)
-                            .addComponent(NumAvailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(VendorID)
-                            .addComponent(VendorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(VendorPhone)
-                            .addComponent(VendorPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
-                        .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(addProductPanelLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(confirmNotice)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(confirmNotice)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(OptionalLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NumAvail)
+                    .addComponent(NumAvailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(VendorID)
+                    .addComponent(VendorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(VendorPhone)
+                    .addComponent(VendorPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addGroup(addProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addProductPanelLayout.createSequentialGroup()
+                        .addComponent(addExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addProductPanelLayout.createSequentialGroup()
+                        .addComponent(addCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))))
         );
 
         checkoutPanel.setAlignmentX(0.0F);
@@ -1275,6 +1271,9 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
 
    private void addProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductActionPerformed
       if(hasManager == true){
+        DefaultTableModel tableModel = (DefaultTableModel) productTable.getModel(); //get the data structure under the JTable
+        int lastProductNum = Integer.parseInt(tableModel.getValueAt(tableModel.getRowCount()-1, 1).toString()); //get the last barcode number in the table.
+        NewProductBarcodeNum.setText(String.format("%05x", (lastProductNum+1))); //set the next barcode number
         managerPanel.setVisible(false);
         addProductPanel.setVisible(true);
       }
@@ -1380,11 +1379,11 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
     private void ManPromoteProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManPromoteProfileButtonActionPerformed
         int[] toProm = ManProfileList.getSelectedRows();
         
-        for(int index : toProm){
-            if(index >= managers.size()){ //can't promote a manager...
-                index -= managers.size();
-                Pair user = cashiers.get(index);
-                cashiers.remove(index);
+        for(int i = toProm.length-1; i >= 0; i--){
+            if(toProm[i] >= managers.size()){ //can't promote a manager...
+                toProm[i] -= managers.size();
+                Pair user = cashiers.get(toProm[i]);
+                cashiers.remove(toProm[i]);
                 managers.add(user);
             }
         }
@@ -1393,6 +1392,8 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
 
     private void ManCreateProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManCreateProfileButtonActionPerformed
         cashiers.add(new Pair<>(String.valueOf(LastUserNum), "password")); //create a new user with a user number and default password
+        images.add(new JLabel("No Image"));
+        System.out.println(cashiers.size());
         LastUserNum++;
         populateProfileList();
     }//GEN-LAST:event_ManCreateProfileButtonActionPerformed
@@ -1400,17 +1401,15 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
     private void ManDeleteProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManDeleteProfileButtonActionPerformed
         int[] toDelete = ManProfileList.getSelectedRows();
         
-        for(int index : toDelete){
-            if(index == currentUser) continue; //can't delete yourself...
-            
-            if(index >= managers.size()){
-                index -= managers.size();
-                images.remove(index);
-                cashiers.remove(index);
+        for(int i = toDelete.length-1; i >= 0; i--){
+            if(toDelete[i] == currentUser) continue; //can't delete yourself...
+            images.remove(toDelete[i]);
+            if(toDelete[i] >= managers.size()){
+                toDelete[i] -= managers.size();
+                cashiers.remove(toDelete[i]);
             }
             else{
-                images.remove(index);
-                managers.remove(index);
+                managers.remove(toDelete[i]);
             }
         }
         populateProfileList();
@@ -1437,6 +1436,7 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
         
         paintProfilePic();
     }//GEN-LAST:event_ChangeProfilePhotoButtonActionPerformed
+    
     private void paintProfilePic() {
       profilePicturePanel.removeAll();
       
@@ -1489,6 +1489,7 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
        updateProductSuccessMessage.setVisible(false);
        invalidCredentialsMessage.setVisible(false);
        barcodeNotFoundMessage.setVisible(false);
+       confirmNotice.setVisible(false);
     }
    
     private void checkNamePassChange() {
@@ -1663,8 +1664,4 @@ public class I2GroceryStoreUI extends javax.swing.JFrame {
     private javax.swing.JTextField userNameEntry;
     private javax.swing.JTextField userNameField;
     // End of variables declaration//GEN-END:variables
-
-
-
-    
 }
